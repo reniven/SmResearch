@@ -313,9 +313,11 @@ for key, values in tweets.items():
     tweetJson.append(tweets[key])
     labels.append(tweets[key]['label'])
 
-newTweetText = tweetText[:10000]
-newLabels = labels[:10000]
-tweets = tweetJson[:10000]
+newTweetText, newLabels, tweets = shuffle(tweetText, labels, tweetJson, random_state = 42)
+
+newTweetText = newTweetText[:400]
+newLabels = newLabels[:400]
+tweets = tweets[:400]
 
 tweetFeatures = messageFeatureExtraction(newTweetText, tweets, 1)
 
